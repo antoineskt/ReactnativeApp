@@ -17,7 +17,7 @@ export default function HomeScreen() {
       <Text style={{ color: "white" }}>Créer une habitude personnalisée</Text>
       <Button
         title="Let's go"
-        onPress={() => navigation.navigate("HabitOne")}
+        onPress={() => navigation.navigate("AddHabitOne")}
       ></Button>
     </View>
   )
