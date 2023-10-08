@@ -6,6 +6,7 @@ import type {
 export type RootStackParamList = {
   Home: undefined
   AddHabitOne: undefined
+  AddHabitTwo: undefined
 }
 
 export type HomeTabParamList = {
