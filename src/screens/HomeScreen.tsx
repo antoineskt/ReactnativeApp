@@ -1,28 +1,22 @@
-import React from "react"
+import React, { useContext } from "react"
 import { useEffect } from "react"
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native"
 import { useNavigation } from "@react-navigation/native"
 import Button from "../components/Button"
 import AsyncStorage from "@react-native-async-storage/async-storage"
+import dayjs from "dayjs"
+import fr from "dayjs/locale/fr"
+import { HabitContext } from "../context/HabitContext"
+import ToDoList from "../components/ToDoList"
+
+dayjs.locale({
+  ...fr,
+  weekStart: 1,
+})
 
 export default function HomeScreen() {
   const navigation = useNavigation()
-  const [items, setItems] = React.useState("")
-
-  const getData = async () => {
-    try {
-      const value = await AsyncStorage.getItem("my-key")
-      if (value !== null) {
-        setItems(value)
-      }
-    } catch (e) {
-      console.error("Error retrieving data:", e)
-    }
-  }
-
-  useEffect(() => {
-    getData()
-  }, [])
+  const { items } = useContext(HabitContext)
 
   return (
     <View
@@ -46,7 +40,7 @@ export default function HomeScreen() {
       )}
       {items.length >= 1 && (
         <View>
-          <Text style={{ color: "white" }}>{items}</Text>
+          <ToDoList />
         </View>
       )}
     </View>

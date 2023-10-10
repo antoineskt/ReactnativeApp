@@ -9,17 +9,22 @@ import { useNavigation } from "@react-navigation/native"
 import Button from "../components/Button"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import React from "react"
+import { nanoid } from "nanoid"
 
 export default function AddHabitTwo() {
   const navigation = useNavigation()
-  const [value, onChangeText] = React.useState("")
+  const [name, onChangeText] = React.useState("")
 
-  const storeData = async (value: string) => {
+  const storeData = async () => {
     try {
-      const jsonValue = JSON.stringify(value)
+      const newDatas = {
+        id: `todo-${nanoid()}`,
+        name,
+      }
+      const jsonValue = JSON.stringify(newDatas)
       await AsyncStorage.setItem("my-key", jsonValue)
     } catch (e) {
-      // saving error
+      console.error("error retrieving data: " + e)
     }
   }
 
@@ -35,7 +40,7 @@ export default function AddHabitTwo() {
       <Text style={{ color: "white" }}>Quel est votre objectif ? </Text>
       <TextInput
         onChangeText={(text) => onChangeText(text)}
-        value={value}
+        value={name}
         style={{
           backgroundColor: "#212121",
           width: 200,
@@ -46,7 +51,7 @@ export default function AddHabitTwo() {
       <Button
         onPress={() => {
           navigation.navigate("Home")
-          storeData(value)
+          storeData
         }}
       >
         Valider
