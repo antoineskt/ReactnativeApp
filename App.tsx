@@ -1,10 +1,16 @@
-import { NavigationContainer } from "@react-navigation/native"
-import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import { RootStackParamList } from "./src/navigation/types"
-import HomeScreen from "./src/screens/HomeScreen"
-import AddHabitOne from "./src/screens/AddHabitOne"
-import AddHabitTwo from "./src/screens/AddHabitTwo"
-import HabitProvider from "./src/context/HabitContext"
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { RootStackParamList } from './src/navigation/types'
+import HomeScreen from './src/screens/HomeScreen'
+import AddHabitOne from './src/screens/AddHabitOne'
+import AddHabitTwo from './src/screens/AddHabitTwo'
+import HabitProvider from './src/context/HabitContext'
+import Stats from './src/screens/Stats'
+import Settings from './src/screens/Settings'
+import GroupFriends from './src/screens/GroupFriends'
+import AddAFriend from './src/screens/AddAFriend'
+import Profil from './src/screens/Profil'
+import Message from './src/screens/Message'
 import 'react-native-get-random-values'
 
 // CAREFUL TO WRITE TYPE OF EACH SCREEN
@@ -15,9 +21,51 @@ export default function App() {
     <NavigationContainer>
       <HabitProvider>
         <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="AddHabitOne" component={AddHabitOne} />
-          <Stack.Screen name="AddHabitTwo" component={AddHabitTwo} />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="Home"
+            component={HomeScreen}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="AddHabitOne"
+            component={AddHabitOne}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="AddHabitTwo"
+            component={AddHabitTwo}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="Stats"
+            component={Stats}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="Settings"
+            component={Settings}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="GroupFriends"
+            component={GroupFriends}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="AddAFriend"
+            component={AddAFriend}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="Profil"
+            component={Profil}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="Message"
+            component={Message}
+          />
         </Stack.Navigator>
       </HabitProvider>
     </NavigationContainer>

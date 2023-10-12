@@ -39,7 +39,7 @@ const HabitProvider = ({ children }: { children: React.ReactNode }) => {
     getData()
   }, [])
 
-  const deleteTask = (id: string) => {
+  const deleteTask = (id: string): void => {
     const remainingTasks = items.filter((task) => id !== task.id)
     setItems(remainingTasks)
     AsyncStorage.setItem('my-key', JSON.stringify(remainingTasks))

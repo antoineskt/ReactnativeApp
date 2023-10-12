@@ -5,9 +5,9 @@ import { View } from 'react-native'
 
 export default function ToDoList() {
   const { items } = useContext(HabitContext)
-  console.log('todoList ici')
+
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       {items.map((habit) => (
         <ToDo key={habit.id} id={habit.id} name={habit.name} />
       ))}

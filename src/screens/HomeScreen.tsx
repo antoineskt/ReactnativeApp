@@ -8,6 +8,8 @@ import dayjs from 'dayjs'
 import fr from 'dayjs/locale/fr'
 import { HabitContext } from '../context/HabitContext'
 import ToDoList from '../components/ToDoList'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 dayjs.locale({
   ...fr,
@@ -21,17 +23,11 @@ export default function HomeScreen() {
   console.log('items   s: ' + items)
 
   return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'black',
-      }}
-    >
+    <View style={{ flex: 1 }}>
+      <Header />
       {items.length < 1 && (
-        <View>
-          <Text style={{ color: 'white' }}>
+        <View style={{ flex: 1 }}>
+          <Text style={{}}>
             Créer une habitude personnalisée dès maintenant afin de suivre et
             d'accomplir tes objectifs
           </Text>
@@ -41,10 +37,13 @@ export default function HomeScreen() {
         </View>
       )}
       {items.length >= 1 && (
-        <View>
+        <View
+          style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+        >
           <ToDoList />
         </View>
       )}
+      <Footer />
     </View>
   )
 }

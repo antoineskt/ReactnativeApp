@@ -1,12 +1,18 @@
 import type {
   CompositeScreenProps,
   NavigatorScreenParams,
-} from "@react-navigation/native"
+} from '@react-navigation/native'
 
 export type RootStackParamList = {
   Home: undefined
   AddHabitOne: undefined
   AddHabitTwo: undefined
+  Stats: undefined
+  Settings: undefined
+  GroupFriends: undefined
+  AddAFriend: undefined
+  Profil: undefined
+  Message: undefined
 }
 
 export type HomeTabParamList = {
