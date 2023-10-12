@@ -9,7 +9,7 @@ import { useNavigation } from "@react-navigation/native"
 import Button from "../components/Button"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import React from "react"
-import { nanoid } from "nanoid"
+import { v4 as uuid } from 'uuid'
 
 export default function AddHabitTwo() {
   const navigation = useNavigation()
@@ -17,11 +17,13 @@ export default function AddHabitTwo() {
 
   const storeData = async () => {
     try {
+      console.log("ici")
       const newDatas = {
-        id: `todo-${nanoid()}`,
+        id: `todo-${uuid()}`,
         name,
       }
-      const jsonValue = JSON.stringify(newDatas)
+      const jsonValue = JSON.stringify([newDatas])
+      console.log(jsonValue)
       await AsyncStorage.setItem("my-key", jsonValue)
     } catch (e) {
       console.error("error retrieving data: " + e)
@@ -51,7 +53,7 @@ export default function AddHabitTwo() {
       <Button
         onPress={() => {
           navigation.navigate("Home")
-          storeData
+          storeData()
         }}
       >
         Valider

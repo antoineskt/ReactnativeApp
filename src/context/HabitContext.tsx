@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react"
-import { createContext } from "react"
-import dayjs from "dayjs"
-import AsyncStorage from "@react-native-async-storage/async-storage"
+import { useState, useEffect } from 'react'
+import { createContext } from 'react'
+import dayjs from 'dayjs'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 interface Item {
   id: string
@@ -20,16 +20,18 @@ export const HabitContext = createContext<HabitContextProps>({
 
 const HabitProvider = ({ children }: { children: React.ReactNode }) => {
   const [items, setItems] = useState<Item[]>([])
-
   const getData = async () => {
     try {
-      const jsonValue = await AsyncStorage.getItem("my-key")
+      const jsonValue = await AsyncStorage.getItem('my-key')
       if (jsonValue !== null) {
         const value = JSON.parse(jsonValue)
+
+        console.log('valuee : ' + value)
+        console.log('getData ici')
         setItems(value)
       }
     } catch (e) {
-      console.error("error retrieving data: " + e)
+      console.error('error retrieving data: ' + e)
     }
   }
 
@@ -40,7 +42,7 @@ const HabitProvider = ({ children }: { children: React.ReactNode }) => {
   const deleteTask = (id: string) => {
     const remainingTasks = items.filter((task) => id !== task.id)
     setItems(remainingTasks)
-    AsyncStorage.setItem("my-key", JSON.stringify(remainingTasks))
+    AsyncStorage.setItem('my-key', JSON.stringify(remainingTasks))
     getData()
   }
 

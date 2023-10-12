@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "1.18.2",
+    "@react-native/metro-config": "^0.74.0",
     "@react-navigation/native": "^6.1.8",
     "@react-navigation/native-stack": "^6.9.14",
     "dayjs": "^1.11.10",
@@ -17,7 +18,10 @@
     "expo-status-bar": "~1.6.0",
     "nanoid": "^5.0.1",
     "react": "18.2.0",
-    "react-native": "0.72.5"
+    "react-native": "0.72.5",
+    "react-native-get-random-values": "^1.9.0",
+    "react-native-svg": "13.9.0",
+    "react-native-svg-transformer": "^1.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
@@ -25,6 +29,7 @@
     "@types/jest": "^29.5.5",
     "@types/react": "^18.2.25",
     "@types/react-test-renderer": "^18.0.3",
+    "@types/uuid": "^9.0.5",
     "typescript": "^5.2.2"
   },
   "private": true

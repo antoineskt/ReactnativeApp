@@ -5,6 +5,7 @@ import HomeScreen from "./src/screens/HomeScreen"
 import AddHabitOne from "./src/screens/AddHabitOne"
 import AddHabitTwo from "./src/screens/AddHabitTwo"
 import HabitProvider from "./src/context/HabitContext"
+import 'react-native-get-random-values'
 
 // CAREFUL TO WRITE TYPE OF EACH SCREEN
 const Stack = createNativeStackNavigator<RootStackParamList>()
