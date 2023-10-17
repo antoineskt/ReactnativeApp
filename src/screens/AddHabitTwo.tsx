@@ -8,12 +8,14 @@ import {
 import { useNavigation } from '@react-navigation/native'
 import Button from '../components/Button'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import React from 'react'
 import { v4 as uuid } from 'uuid'
+import { HabitContext } from '../context/HabitContext'
+import React, { useContext } from 'react'
 
 export default function AddHabitTwo() {
   const navigation = useNavigation()
   const [name, onChangeText] = React.useState('')
+  const { setItems } = useContext(HabitContext)
 
   const storeData = async () => {
     try {
@@ -21,9 +23,18 @@ export default function AddHabitTwo() {
         id: `todo-${uuid()}`,
         name,
       }
-      const jsonValue = JSON.stringify([newDatas])
-      console.log(jsonValue)
-      await AsyncStorage.setItem('my-key', jsonValue)
+      const getDataFromLS = await AsyncStorage.getItem('my-key')
+      if (getDataFromLS !== null) {
+        const dataParseFromLS = JSON.parse(getDataFromLS)
+        const newDataWithDataLS = [...dataParseFromLS, newDatas]
+        console.log(newDataWithDataLS)
+        await AsyncStorage.setItem('my-key', JSON.stringify(newDataWithDataLS))
+        setItems(newDataWithDataLS)
+      } else {
+        console.log(newDatas)
+        await AsyncStorage.setItem('my-key', JSON.stringify([newDatas]))
+        setItems([newDatas])
+      }
     } catch (e) {
       console.error('error retrieving data: ' + e)
     }

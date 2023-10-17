@@ -1,9 +1,8 @@
 import React, { useContext } from 'react'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import Button from '../components/Button'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import dayjs from 'dayjs'
 import fr from 'dayjs/locale/fr'
 import { HabitContext } from '../context/HabitContext'
@@ -19,6 +18,8 @@ dayjs.locale({
 export default function HomeScreen() {
   const navigation = useNavigation()
   const { items } = useContext(HabitContext)
+
+  console.log('homephae')
   console.log(items)
   console.log('items   s: ' + items)
 

@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
 import { createContext } from 'react'
 import dayjs from 'dayjs'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import React, { useState, useEffect, Dispatch, SetStateAction } from 'react'
 
 interface Item {
   id: string
@@ -11,10 +11,12 @@ interface Item {
 interface HabitContextProps {
   items: Item[]
   deleteTask: (id: string) => void
+  setItems: Dispatch<SetStateAction<Item[]>>
 }
 
 export const HabitContext = createContext<HabitContextProps>({
   items: [], //value by default
+  setItems: () => {},
   deleteTask: (id: string) => {},
 })
 
@@ -48,6 +50,7 @@ const HabitProvider = ({ children }: { children: React.ReactNode }) => {
 
   const contextValues = {
     items,
+    setItems,
     deleteTask,
   }
 

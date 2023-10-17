@@ -1,4 +1,10 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+} from 'react-native'
 import React, { useContext } from 'react'
 import { HabitContext } from '../context/HabitContext'
 
@@ -10,24 +16,32 @@ interface ToDoProps {
 }
 
 export default function ToDo({ id, name }: ToDoProps) {
-  const { items, deleteTask } = useContext(HabitContext)
+  const { deleteTask } = useContext(HabitContext)
 
   return (
     <View
       style={{
-        backgroundColor: 'grey',
+        backgroundColor: 'black',
         flexDirection: 'row',
-        width: 100,
+
         borderRadius: 8,
+        padding: 10,
+        marginLeft: '15%',
+        marginRight: '15%',
+        marginTop: '10%',
       }}
     >
-      <Text style={{ color: 'white', padding: 2, fontSize: 15 }}>{name}</Text>
+      <Text style={{ color: 'white', fontSize: 19 }}>{name}</Text>
 
       <TouchableOpacity
         onPress={() => deleteTask(id)}
-        style={{ flexDirection: 'row', padding: 2 }}
+        style={{
+          flexDirection: 'row',
+          paddingLeft: '40%',
+          margin: 0,
+        }}
       >
-        <Trash />
+        <Trash fill={'white'} />
       </TouchableOpacity>
     </View>
   )
