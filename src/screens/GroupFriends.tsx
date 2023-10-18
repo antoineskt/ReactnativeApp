@@ -33,7 +33,7 @@ const GroupFriends = () => {
   return (
     <View style={styles.container}>
       <Header />
-
+      <View style={{ flex: 1 }}></View>
       <Footer />
     </View>
   )

@@ -12,12 +12,14 @@ interface HabitContextProps {
   items: Item[]
   deleteTask: (id: string) => void
   setItems: Dispatch<SetStateAction<Item[]>>
+  editTask: (id: string, newName: string) => void
 }
 
 export const HabitContext = createContext<HabitContextProps>({
   items: [], //value by default
   setItems: () => {},
   deleteTask: (id: string) => {},
+  editTask: (id: string, newName: string) => {},
 })
 
 const HabitProvider = ({ children }: { children: React.ReactNode }) => {
@@ -48,10 +50,22 @@ const HabitProvider = ({ children }: { children: React.ReactNode }) => {
     getData()
   }
 
+  const editTask = (id: string, newName: string): void => {
+    const editedTaskList = items.map((task) => {
+      if (id === task.id) {
+        return { ...task, name: newName }
+      }
+      return task
+    })
+    setItems(editedTaskList)
+    AsyncStorage.setItem('my-key', JSON.stringify(editedTaskList))
+  }
+
   const contextValues = {
     items,
     setItems,
     deleteTask,
+    editTask,
   }
 
   return (
