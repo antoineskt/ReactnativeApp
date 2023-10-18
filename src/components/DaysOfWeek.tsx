@@ -1,18 +1,18 @@
-import React from 'react';
-import { View } from 'react-native';
-import DayButton from '../components/DayButton';
-import dayjs, { Dayjs } from 'dayjs';
+import React from 'react'
+import { View } from 'react-native'
+import DayButton from '../components/DayButton'
+import dayjs, { Dayjs } from 'dayjs'
 
 interface DaysOfWeekProps {
-  weekdays: Dayjs[];
+  weekdays: Dayjs[]
 }
 
 export default function DaysOfWeek({ weekdays }: DaysOfWeekProps) {
   return (
-    <View>
+    <View style={{ flexDirection: 'row' }}>
       {weekdays.map((day) => (
         <DayButton key={day.toString()}>{day.format('ddd')}</DayButton>
       ))}
     </View>
-  );
+  )
 }

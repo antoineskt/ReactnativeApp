@@ -1,5 +1,14 @@
-import { TouchableOpacity, View } from 'react-native'
+import { TouchableOpacity, View, Text } from 'react-native'
+import React, { ReactNode } from 'react'
 
-export default function DayButton({ children }) {
-  return <TouchableOpacity>{children}</TouchableOpacity>
+interface DayButtonProps {
+  children: ReactNode
+}
+
+export default function DayButton({ children }: DayButtonProps) {
+  return (
+    <TouchableOpacity style={{ padding: 5 }}>
+      <Text>{children}</Text>
+    </TouchableOpacity>
+  )
 }
