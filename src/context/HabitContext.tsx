@@ -1,11 +1,17 @@
 import { createContext } from 'react'
-import dayjs from 'dayjs'
+import dayjs, { Dayjs } from 'dayjs'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, { useState, useEffect, Dispatch, SetStateAction } from 'react'
 
 interface Item {
   id: string
   name: string
+  date: string[] | null
+  totalDate: number | null
+  totalTaskDone: number
+  serie: number
+  dateIsDone: never[]
+  dateDayJS: dayjs.Dayjs[] | null
 }
 
 interface HabitContextProps {
@@ -13,6 +19,8 @@ interface HabitContextProps {
   deleteTask: (id: string) => void
   setItems: Dispatch<SetStateAction<Item[]>>
   editTask: (id: string, newName: string) => void
+  selectedDateFormatted: string
+  setselectedDateFormatted: Dispatch<SetStateAction<string>>
 }
 
 export const HabitContext = createContext<HabitContextProps>({
@@ -20,9 +28,14 @@ export const HabitContext = createContext<HabitContextProps>({
   setItems: () => {},
   deleteTask: (id: string) => {},
   editTask: (id: string, newName: string) => {},
+  selectedDateFormatted: '',
+  setselectedDateFormatted: () => {},
 })
 
 const HabitProvider = ({ children }: { children: React.ReactNode }) => {
+  const [selectedDateFormatted, setselectedDateFormatted] = useState(
+    dayjs().format('dddd D MMMM')
+  )
   const [items, setItems] = useState<Item[]>([])
   const getData = async () => {
     try {
@@ -66,6 +79,8 @@ const HabitProvider = ({ children }: { children: React.ReactNode }) => {
     setItems,
     deleteTask,
     editTask,
+    selectedDateFormatted,
+    setselectedDateFormatted,
   }
 
   return (

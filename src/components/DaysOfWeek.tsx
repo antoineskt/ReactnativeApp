@@ -5,9 +5,17 @@ import dayjs, { Dayjs } from 'dayjs'
 
 interface DaysOfWeekProps {
   weekdays: Dayjs[]
+  handleDayClick: (day: Dayjs) => void
+  selectedDateFormatted: Dayjs[] | string
+  arrayOfselectedDateFormattedRightFormat?: string[]
 }
 
-export default function DaysOfWeek({ weekdays }: DaysOfWeekProps) {
+export default function DaysOfWeek({
+  weekdays,
+  handleDayClick,
+  selectedDateFormatted,
+  arrayOfselectedDateFormattedRightFormat,
+}: DaysOfWeekProps) {
   return (
     <View style={{ flexDirection: 'row' }}>
       {weekdays.map((day) => (
